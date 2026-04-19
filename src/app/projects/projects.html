@@ -1,0 +1,95 @@
+<section id="projects" class="py-24 bg-surface-container-low/80 backdrop-blur-sm overflow-hidden">
+  <div class="max-w-7xl mx-auto px-8">
+
+    <!-- Heading -->
+    <div class="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-16">
+      <div class="space-y-2">
+        <span class="text-primary font-headline font-bold text-xs uppercase tracking-[0.2em]">Portfolio</span>
+        <h2 class="text-4xl font-headline font-bold text-on-surface animated-heading inline-block">Featured Deployments</h2>
+      </div>
+      <div class="h-px flex-grow bg-primary/20 mx-8 hidden md:block"></div>
+    </div>
+
+    <div class="space-y-32">
+
+      <!-- Project 1: PMA -->
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center group">
+
+        <!-- Image -->
+        <div class="relative rounded-2xl overflow-hidden shadow-2xl transition-all duration-500
+                    hover:scale-[1.03] border border-primary/5 hover:border-primary/40 project-card-glow">
+          <div class="aspect-video overflow-hidden bg-surface-container-high">
+            <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAUufHN3zq4Lm_nBM4w4niHGlKysEAbiK1pDjrD4pXBDUuz10S8OxHCnqsctEczy2o7gksBWOAJs69rb1-3zNxgy1gs4hDdiacSqvbZ3PJBahK7Z5Yi0LAo1DedvVGK3Clw5zLb3jBqu6IqG1VbDKb_A7ARexsCUfJGCkjDAvj3AK3fOyBgPEAq87f6b1dN9h9Jsq48rPezUhwnRUyUyNfaUqSUqADY7ZcAmITNKjJa4tZIokM2GcivdltAGOlVFUiGrWcIXwEHJc9i"
+                 alt="PMA Property Management Dashboard"
+                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700
+                        opacity-40 grayscale group-hover:grayscale-0 group-hover:opacity-100" />
+          </div>
+          <div class="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent
+                      opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
+        </div>
+
+        <!-- Text -->
+        <div class="space-y-6">
+          <div class="flex justify-between items-start group/title">
+            <h3 class="text-3xl font-headline font-bold text-on-surface group-hover/title:text-primary transition-colors cursor-pointer">
+              Property Management App (PMA)
+            </h3>
+            <span class="material-symbols-outlined text-primary group-hover/title:rotate-45 transition-transform text-3xl">
+              arrow_outward
+            </span>
+          </div>
+          <p class="text-on-surface-variant text-lg leading-relaxed group-hover:text-on-surface transition-colors">
+            A comprehensive CRM solution for streamlining rental operations.
+            Engineered the core API logic and implemented robust security layers.
+          </p>
+          <div class="flex flex-wrap gap-4 pt-4">
+            <span class="text-xs tracking-[0.2em] uppercase font-bold text-primary px-2 py-1 border border-primary/10 rounded hover:border-primary transition-colors">JAVA</span>
+            <span class="text-xs tracking-[0.2em] uppercase font-bold text-primary px-2 py-1 border border-primary/10 rounded hover:border-primary transition-colors">SPRING BOOT</span>
+            <span class="text-xs tracking-[0.2em] uppercase font-bold text-primary px-2 py-1 border border-primary/10 rounded hover:border-primary transition-colors">MYSQL</span>
+            <span class="text-xs tracking-[0.2em] uppercase font-bold text-primary px-2 py-1 border border-primary/10 rounded hover:border-primary transition-colors">MOCKITO</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Project 2: nPos CLM -->
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center group">
+
+        <!-- Text (left on desktop) -->
+        <div class="space-y-6 lg:order-1 order-2">
+          <div class="flex justify-between items-start group/title">
+            <h3 class="text-3xl font-headline font-bold text-on-surface group-hover/title:text-primary transition-colors cursor-pointer">
+              nPos CLM (Loan System)
+            </h3>
+            <span class="material-symbols-outlined text-primary group-hover/title:rotate-45 transition-transform text-3xl">
+              arrow_outward
+            </span>
+          </div>
+          <p class="text-on-surface-variant text-lg leading-relaxed group-hover:text-on-surface transition-colors">
+            Co-lending loan origination platform. Migrated monolithic orchestration to
+            Kafka-based event driving and implemented Redis caching.
+          </p>
+          <div class="flex flex-wrap gap-4 pt-4">
+            <span class="text-xs tracking-[0.2em] uppercase font-bold text-primary px-2 py-1 border border-primary/10 rounded hover:border-primary transition-colors">SPRING MVC</span>
+            <span class="text-xs tracking-[0.2em] uppercase font-bold text-primary px-2 py-1 border border-primary/10 rounded hover:border-primary transition-colors">PYTHON</span>
+            <span class="text-xs tracking-[0.2em] uppercase font-bold text-primary px-2 py-1 border border-primary/10 rounded hover:border-primary transition-colors">KAFKA</span>
+            <span class="text-xs tracking-[0.2em] uppercase font-bold text-primary px-2 py-1 border border-primary/10 rounded hover:border-primary transition-colors">REDIS</span>
+          </div>
+        </div>
+
+        <!-- Image (right on desktop) -->
+        <div class="lg:order-2 order-1 relative rounded-2xl overflow-hidden shadow-2xl transition-all duration-500
+                    hover:scale-[1.03] border border-primary/5 hover:border-primary/40 project-card-glow">
+          <div class="aspect-video overflow-hidden bg-surface-container-high">
+            <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuANvlw3Fmcs_pMlC69bcwPOnL1qbWnaESeSlkX-LpKdK03U2ieo32wCE3Qpzsn0-iFWFUBkctV7Imhed8XNWKIXzeYwhTVRiddXPk1wXEINSluNm1woZ6Be6Cz_Snxw4n6B2FzFeImp6rvNmCZazW4ZGdufRY_XvgkhI8kv9UThgWvrYMLJnPGDkcPynO_zoz4saCp0cYM26pDikP6EaJkkx5EFqCRtWi2VPWicKLzVhkKk-O78ob3W3pWZw8oJsX5p3jpbamW_k_CC"
+                 alt="nPos CLM Loan Origination System"
+                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700
+                        opacity-40 grayscale group-hover:grayscale-0 group-hover:opacity-100" />
+          </div>
+          <div class="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent
+                      opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
