@@ -8,89 +8,147 @@
     </div>
 
     <!-- Skills grid -->
-    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 auto-rows-fr">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
 
-      <!-- Core Languages (col-span-2) -->
-      <div class="col-span-2 bg-surface-container-high/40 backdrop-blur-sm p-8 rounded-lg
-                  flex flex-col justify-between hover:bg-surface-container-highest/60 transition-all
-                  border border-primary/5 hover:border-primary/20 project-card-glow group">
+      <!-- Core & Frameworks -->
+      <div class="lg:col-span-2 bg-surface-container-high/40 backdrop-blur-sm p-8 rounded-lg border border-primary/5 hover:border-primary/20 transition-all project-card-glow flex flex-col space-y-6 group">
         <div>
-          <span class="material-symbols-outlined text-primary text-3xl mb-4 group-hover:scale-110 transition-transform block">code</span>
-          <h3 class="text-xl font-headline font-bold mb-4 group-hover:translate-x-1 transition-transform">Core Languages</h3>
-        </div>
-        <div class="flex flex-wrap gap-2">
-          <span class="px-3 py-1 bg-emerald-950/40 text-primary text-xs font-bold rounded border border-primary/20
-                       hover:bg-primary hover:text-on-primary transition-colors cursor-default">JAVA (Expert)</span>
-          <span class="px-3 py-1 bg-emerald-950/40 text-primary text-xs font-bold rounded border border-primary/20
-                       hover:bg-primary hover:text-on-primary transition-colors cursor-default">PYTHON</span>
-          <span class="px-3 py-1 bg-emerald-950/40 text-primary text-xs font-bold rounded border border-primary/20
-                       hover:bg-primary hover:text-on-primary transition-colors cursor-default">SQL</span>
-        </div>
-      </div>
-
-      <!-- Enterprise Frameworks (col-span-2, row-span-2) -->
-      <div class="col-span-2 row-span-2 bg-surface-container-high/40 backdrop-blur-sm p-8 rounded-lg
-                  flex flex-col justify-between hover:bg-surface-container-highest/60 transition-all
-                  border-l-4 border-primary/50 border-r border-t border-b border-primary/5 project-card-glow group">
-        <div>
-          <span class="material-symbols-outlined text-primary text-4xl mb-6 group-hover:scale-110 transition-transform block">terminal</span>
-          <h3 class="text-2xl font-headline font-bold mb-6 group-hover:translate-x-1 transition-transform">Enterprise Frameworks</h3>
+          <div class="flex items-center gap-3 mb-4 text-primary group-hover:translate-x-1 transition-transform">
+            <span class="material-symbols-outlined text-3xl">code</span>
+            <h3 class="text-xl font-headline font-bold">Core & Frameworks</h3>
+          </div>
           <div class="space-y-4">
-            <div class="flex items-center justify-between">
-              <span class="text-on-surface-variant font-medium">Spring Boot &amp; Security</span>
-              <div class="w-24 h-1 bg-primary/20 rounded-full overflow-hidden">
-                <div class="w-[95%] h-full bg-primary shadow-[0_0_8px_rgba(45,212,191,0.6)]"></div>
+            <div>
+              <span class="text-xs text-primary/60 font-bold uppercase tracking-wider mb-2 block">Core Language</span>
+              <div class="flex flex-wrap gap-2">
+                <span class="px-3 py-1 bg-emerald-950/40 text-primary text-xs font-bold rounded border border-primary/20">Java 8 (OCA Certified)</span>
               </div>
             </div>
-            <div class="flex items-center justify-between">
-              <span class="text-on-surface-variant font-medium">Spring Data JPA</span>
-              <div class="w-24 h-1 bg-primary/20 rounded-full overflow-hidden">
-                <div class="w-[90%] h-full bg-primary shadow-[0_0_8px_rgba(45,212,191,0.6)]"></div>
-              </div>
-            </div>
-            <div class="flex items-center justify-between">
-              <span class="text-on-surface-variant font-medium">Kafka &amp; Redis</span>
-              <div class="w-24 h-1 bg-primary/20 rounded-full overflow-hidden">
-                <div class="w-[85%] h-full bg-primary shadow-[0_0_8px_rgba(45,212,191,0.6)]"></div>
-              </div>
-            </div>
-            <div class="flex items-center justify-between">
-              <span class="text-on-surface-variant font-medium">Liquibase/PostgreSQL</span>
-              <div class="w-24 h-1 bg-primary/20 rounded-full overflow-hidden">
-                <div class="w-[88%] h-full bg-primary shadow-[0_0_8px_rgba(45,212,191,0.6)]"></div>
+            <div>
+              <span class="text-xs text-primary/60 font-bold uppercase tracking-wider mb-2 block">Frameworks</span>
+              <div class="flex flex-wrap gap-2">
+                <span class="px-3 py-1 bg-surface-container-highest text-on-surface-variant text-xs rounded border border-primary/10">Spring Boot</span>
+                <span class="px-3 py-1 bg-surface-container-highest text-on-surface-variant text-xs rounded border border-primary/10">Spring Security</span>
+                <span class="px-3 py-1 bg-surface-container-highest text-on-surface-variant text-xs rounded border border-primary/10">Spring Data JPA</span>
               </div>
             </div>
           </div>
         </div>
-        <div class="mt-8 text-xs text-primary/60 italic">
-          Deep expertise in orchestration patterns and microservices caching.
+      </div>
+
+      <!-- Infrastructure -->
+      <div class="lg:col-span-2 bg-surface-container-high/40 backdrop-blur-sm p-8 rounded-lg border border-primary/5 hover:border-primary/20 transition-all project-card-glow flex flex-col space-y-6 group">
+        <div>
+          <div class="flex items-center gap-3 mb-4 text-primary group-hover:translate-x-1 transition-transform">
+            <span class="material-symbols-outlined text-3xl">dns</span>
+            <h3 class="text-xl font-headline font-bold">Data & Messaging</h3>
+          </div>
+          <div class="space-y-4">
+            <div>
+              <span class="text-xs text-primary/60 font-bold uppercase tracking-wider mb-2 block">Databases</span>
+              <div class="flex flex-wrap gap-2">
+                <span class="px-3 py-1 bg-surface-container-highest text-on-surface-variant text-xs rounded border border-primary/10">PostgreSQL</span>
+                <span class="px-3 py-1 bg-surface-container-highest text-on-surface-variant text-xs rounded border border-primary/10">MySQL</span>
+                <span class="px-3 py-1 bg-surface-container-highest text-on-surface-variant text-xs rounded border border-primary/10">Redis</span>
+              </div>
+            </div>
+            <div>
+              <span class="text-xs text-primary/60 font-bold uppercase tracking-wider mb-2 block">Messaging</span>
+              <div class="flex flex-wrap gap-2">
+                <span class="px-3 py-1 bg-surface-container-highest text-on-surface-variant text-xs rounded border border-primary/10">Apache Kafka</span>
+              </div>
+            </div>
+            <div>
+              <span class="text-xs text-primary/60 font-bold uppercase tracking-wider mb-2 block">Migrations</span>
+              <div class="flex flex-wrap gap-2">
+                <span class="px-3 py-1 bg-surface-container-highest text-on-surface-variant text-xs rounded border border-primary/10">Alembic (Python)</span>
+                <span class="px-3 py-1 bg-surface-container-highest text-on-surface-variant text-xs rounded border border-primary/10">Liquibase</span>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
-      <!-- Frontend -->
-      <div class="bg-surface-container-high/40 backdrop-blur-sm p-6 rounded-lg
-                  hover:bg-surface-container-highest/60 transition-all
-                  border border-primary/5 hover:border-primary/20 project-card-glow group">
-        <h4 class="text-primary font-headline font-bold mb-3 group-hover:translate-x-1 transition-transform">Frontend</h4>
-        <ul class="text-sm space-y-1 text-on-surface-variant">
-          <li class="hover:text-primary transition-colors cursor-default">Angular</li>
-          <li class="hover:text-primary transition-colors cursor-default">JSP</li>
-          <li class="hover:text-primary transition-colors cursor-default">Modern CSS</li>
-        </ul>
+      <!-- DevOps & Tools -->
+      <div class="lg:col-span-2 bg-surface-container-high/40 backdrop-blur-sm p-8 rounded-lg border border-primary/5 hover:border-primary/20 transition-all project-card-glow flex flex-col space-y-6 group">
+        <div>
+          <div class="flex items-center gap-3 mb-4 text-primary group-hover:translate-x-1 transition-transform">
+            <span class="material-symbols-outlined text-3xl">build</span>
+            <h3 class="text-xl font-headline font-bold">DevOps & Tools</h3>
+          </div>
+          <div class="flex flex-wrap gap-2">
+            <span class="px-3 py-1 bg-surface-container-highest text-on-surface-variant text-xs rounded border border-primary/10">Docker</span>
+            <span class="px-3 py-1 bg-surface-container-highest text-on-surface-variant text-xs rounded border border-primary/10">Jenkins</span>
+            <span class="px-3 py-1 bg-surface-container-highest text-on-surface-variant text-xs rounded border border-primary/10">IntelliJ IDEA</span>
+            <span class="px-3 py-1 bg-surface-container-highest text-on-surface-variant text-xs rounded border border-primary/10">Postman</span>
+            <span class="px-3 py-1 bg-surface-container-highest text-on-surface-variant text-xs rounded border border-primary/10">SonarLint</span>
+          </div>
+        </div>
       </div>
 
-      <!-- DevOps -->
-      <div class="bg-surface-container-high/40 backdrop-blur-sm p-6 rounded-lg
-                  hover:bg-surface-container-highest/60 transition-all
-                  border border-primary/5 hover:border-primary/20 project-card-glow group">
-        <h4 class="text-primary font-headline font-bold mb-3 group-hover:translate-x-1 transition-transform">DevOps</h4>
-        <ul class="text-sm space-y-1 text-on-surface-variant">
-          <li class="hover:text-primary transition-colors cursor-default">Docker</li>
-          <li class="hover:text-primary transition-colors cursor-default">Jenkins</li>
-          <li class="hover:text-primary transition-colors cursor-default">Git/GitLab</li>
-        </ul>
+      <!-- Testing & Exploring -->
+      <div class="lg:col-span-2 bg-surface-container-high/40 backdrop-blur-sm p-8 rounded-lg border border-primary/5 hover:border-primary/20 transition-all project-card-glow flex flex-col space-y-6 group">
+        <div>
+          <div class="flex items-center gap-3 mb-4 text-primary group-hover:translate-x-1 transition-transform">
+            <span class="material-symbols-outlined text-3xl">science</span>
+            <h3 class="text-xl font-headline font-bold">Testing & Exploration</h3>
+          </div>
+          <div class="space-y-4">
+            <div>
+              <span class="text-xs text-primary/60 font-bold uppercase tracking-wider mb-2 block">Testing</span>
+              <div class="flex flex-wrap gap-2">
+                <span class="px-3 py-1 bg-surface-container-highest text-on-surface-variant text-xs rounded border border-primary/10">JUnit 5</span>
+                <span class="px-3 py-1 bg-emerald-950/40 text-primary text-xs font-bold rounded border border-primary/20">Mockito (90%+ coverage)</span>
+              </div>
+            </div>
+            <div>
+              <span class="text-xs text-primary/60 font-bold uppercase tracking-wider mb-2 block">Currently Exploring</span>
+              <div class="flex flex-wrap gap-2">
+                <span class="px-3 py-1 bg-surface-container-highest text-on-surface-variant text-xs rounded border border-primary/10 italic">Java 21 Virtual Threads</span>
+                <span class="px-3 py-1 bg-surface-container-highest text-on-surface-variant text-xs rounded border border-primary/10 italic">Kubernetes</span>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
 
     </div>
+
+    <!-- Certifications & Achievements Section -->
+    <div class="mt-24 text-center mb-12 space-y-4">
+      <span class="text-primary font-headline font-bold text-xs uppercase tracking-[0.2em]">Milestones</span>
+      <h2 class="text-4xl font-headline font-bold text-on-surface animated-heading">Certifications & Achievements</h2>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-8">
+      <!-- Oracle Cert -->
+      <div class="flex items-center gap-6 p-8 bg-surface-container-low/60 backdrop-blur-sm rounded-2xl
+                  hover:bg-surface-container-high/80 transition-all duration-300
+                  border border-primary/10 hover:border-primary/40 group project-card-glow transform hover:-translate-y-1">
+        <div class="w-16 h-16 bg-surface-container-high flex items-center justify-center rounded-xl
+                    group-hover:bg-primary transition-colors duration-300 border border-primary/10 shrink-0">
+          <span class="material-symbols-outlined text-primary group-hover:text-on-primary text-3xl">workspace_premium</span>
+        </div>
+        <div>
+          <h4 class="text-lg font-headline font-bold text-on-surface mb-1">Oracle Certified Associate (OCA)</h4>
+          <p class="text-sm text-primary/60 font-bold uppercase tracking-wider">Java SE 8 Programmer</p>
+        </div>
+      </div>
+
+      <!-- Test Coverage -->
+      <div class="flex items-center gap-6 p-8 bg-surface-container-low/60 backdrop-blur-sm rounded-2xl
+                  hover:bg-surface-container-high/80 transition-all duration-300
+                  border border-primary/10 hover:border-primary/40 group project-card-glow transform hover:-translate-y-1">
+        <div class="w-16 h-16 bg-surface-container-high flex items-center justify-center rounded-xl
+                    group-hover:bg-primary transition-colors duration-300 border border-primary/10 shrink-0">
+          <span class="material-symbols-outlined text-primary group-hover:text-on-primary text-3xl">verified</span>
+        </div>
+        <div>
+          <h4 class="text-lg font-headline font-bold text-on-surface mb-1">Test-Driven Excellence</h4>
+          <p class="text-sm text-primary/60 font-medium">Maintains 90%+ unit test coverage across all production modules</p>
+        </div>
+      </div>
+    </div>
+
   </div>
 </section>
