@@ -29,6 +29,7 @@ body {
   transition: text-shadow 0.3s ease, transform 0.3s ease;
   display: inline-block;
 }
+
 .animated-heading:hover {
   text-shadow: 0 0 15px rgba(45, 212, 191, 0.6);
   transform: scale(1.01);
@@ -47,7 +48,7 @@ body {
   height: 200%;
   pointer-events: none;
   z-index: 0;
-  background: radial-gradient(circle at 50% 50%, rgba(45,212,191,0.03) 0%, transparent 70%);
+  background: radial-gradient(circle at 50% 50%, rgba(45, 212, 191, 0.03) 0%, transparent 70%);
 }
 
 .star {
@@ -61,8 +62,15 @@ body {
 }
 
 @keyframes twinkle {
-  0%, 100% { opacity: 0.3; }
-  50%       { opacity: 0.8; }
+
+  0%,
+  100% {
+    opacity: 0.3;
+  }
+
+  50% {
+    opacity: 0.8;
+  }
 }
 
 /* ── Material Icons ── */
@@ -72,5 +80,11 @@ body {
 }
 
 /* ── Scrollbar hidden ── */
-.no-scrollbar::-webkit-scrollbar { display: none; }
-.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
