@@ -1,3 +1,36 @@
+<style>
+  @keyframes modalFadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  @keyframes modalContentIn {
+    from { transform: scale(0.95) translateY(10px); opacity: 0; }
+    to { transform: scale(1) translateY(0); opacity: 1; }
+  }
+  .animate-modal-backdrop {
+    animation: modalFadeIn 0.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+  .animate-modal-content {
+    animation: modalContentIn 0.25s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  }
+
+  /* Sleek, dark scrollbar for the modal content box */
+  .custom-modal-scrollbar::-webkit-scrollbar {
+    width: 6px;
+  }
+  .custom-modal-scrollbar::-webkit-scrollbar-track {
+    background: rgba(2, 6, 23, 0.5);
+    border-radius: 8px;
+  }
+  .custom-modal-scrollbar::-webkit-scrollbar-thumb {
+    background: rgba(45, 212, 191, 0.25);
+    border-radius: 8px;
+  }
+  .custom-modal-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: rgba(45, 212, 191, 0.5);
+  }
+</style>
+
 <section id="projects" class="py-24 bg-surface-container-low/80 backdrop-blur-sm overflow-hidden">
   <div class="max-w-7xl mx-auto px-8">
 
@@ -5,118 +38,162 @@
     <div class="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-16">
       <div class="space-y-2">
         <span class="text-primary font-headline font-bold text-xs uppercase tracking-[0.2em]">Portfolio</span>
-        <h2 class="text-4xl font-headline font-bold text-on-surface animated-heading inline-block">Featured Deployments
-        </h2>
+        <h2 class="text-4xl font-headline font-bold text-on-surface animated-heading inline-block">Featured Deployments</h2>
       </div>
       <div class="h-px flex-grow bg-primary/20 mx-8 hidden md:block"></div>
     </div>
 
+    <!-- Grid List of Projects -->
     <div class="space-y-32">
+      @for (project of projects; track project.id; let i = $index) {
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center group cursor-pointer" (click)="openProject(project)">
 
-      <!-- Project 1: PMA -->
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center group">
+          @if (i % 2 === 0) {
+            <!-- EVEN: Card Left, Text Right (Desktop) -->
 
-        <!-- Image -->
-        <div class="relative rounded-2xl overflow-hidden shadow-2xl transition-all duration-500
-                    hover:scale-[1.03] border border-primary/5 hover:border-primary/40 project-card-glow">
-          <div class="aspect-video overflow-hidden bg-surface-container-high">
-            <img
-              src="https://lh3.googleusercontent.com/aida-public/AB6AXuAUufHN3zq4Lm_nBM4w4niHGlKysEAbiK1pDjrD4pXBDUuz10S8OxHCnqsctEczy2o7gksBWOAJs69rb1-3zNxgy1gs4hDdiacSqvbZ3PJBahK7Z5Yi0LAo1DedvVGK3Clw5zLb3jBqu6IqG1VbDKb_A7ARexsCUfJGCkjDAvj3AK3fOyBgPEAq87f6b1dN9h9Jsq48rPezUhwnRUyUyNfaUqSUqADY7ZcAmITNKjJa4tZIokM2GcivdltAGOlVFUiGrWcIXwEHJc9i"
-              alt="PMA Property Management Dashboard" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700
-                        opacity-40 grayscale group-hover:grayscale-0 group-hover:opacity-100" />
-          </div>
-          <div class="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent
-                      opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
+            <!-- Visual Card (left on desktop) -->
+            <div class="relative rounded-2xl overflow-hidden shadow-2xl transition-all duration-500
+                        hover:scale-[1.03] border border-primary/5 hover:border-primary/40 project-card-glow aspect-video bg-surface-container-high/40 flex items-center justify-center">
+              <div class="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent
+                          opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
+              
+              @if (project.visualType === 'image') {
+                <div class="w-full h-full overflow-hidden bg-surface-container-high">
+                  <img [src]="project.visualValue" [alt]="project.title" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700
+                              opacity-40 grayscale group-hover:grayscale-0 group-hover:opacity-100" />
+                </div>
+              } @else {
+                <span class="material-symbols-outlined text-primary/40 text-7xl transition-all duration-500 group-hover:scale-110 group-hover:text-primary">
+                  {{ project.visualValue }}
+                </span>
+              }
+            </div>
+
+            <!-- Text (right on desktop) -->
+            <div class="space-y-6">
+              <div class="flex justify-between items-start group/title">
+                <div>
+                  <h3 class="text-3xl font-headline font-bold text-on-surface group-hover/title:text-primary transition-colors">
+                    {{ project.title }}
+                  </h3>
+                  <p class="text-sm text-primary/60 mt-1 font-mono uppercase tracking-wider">{{ project.subtitle }}</p>
+                </div>
+                <span class="material-symbols-outlined text-primary group-hover/title:rotate-45 transition-transform text-3xl">
+                  arrow_outward
+                </span>
+              </div>
+              <p class="text-on-surface-variant text-lg leading-relaxed group-hover:text-on-surface transition-colors">
+                {{ project.description }}
+              </p>
+              <div class="flex flex-wrap gap-3 pt-4">
+                @for (tag of project.tags; track tag) {
+                  <span class="text-[10px] tracking-[0.1em] uppercase font-bold text-primary px-2 py-1 border border-primary/10 rounded hover:border-primary transition-colors">
+                    {{ tag }}
+                  </span>
+                }
+              </div>
+            </div>
+
+          } @else {
+            <!-- ODD: Text Left, Card Right (Desktop) -->
+
+            <!-- Text (left on desktop) -->
+            <div class="space-y-6 lg:order-1 order-2">
+              <div class="flex justify-between items-start group/title">
+                <div>
+                  <h3 class="text-3xl font-headline font-bold text-on-surface group-hover/title:text-primary transition-colors">
+                    {{ project.title }}
+                  </h3>
+                  <p class="text-sm text-primary/60 mt-1 font-mono uppercase tracking-wider">{{ project.subtitle }}</p>
+                </div>
+                <span class="material-symbols-outlined text-primary group-hover/title:rotate-45 transition-transform text-3xl">
+                  arrow_outward
+                </span>
+              </div>
+              <p class="text-on-surface-variant text-lg leading-relaxed group-hover:text-on-surface transition-colors">
+                {{ project.description }}
+              </p>
+              <div class="flex flex-wrap gap-3 pt-4">
+                @for (tag of project.tags; track tag) {
+                  <span class="text-[10px] tracking-[0.1em] uppercase font-bold text-primary px-2 py-1 border border-primary/10 rounded hover:border-primary transition-colors">
+                    {{ tag }}
+                  </span>
+                }
+              </div>
+            </div>
+
+            <!-- Visual Card (right on desktop) -->
+            <div class="lg:order-2 order-1 relative rounded-2xl overflow-hidden shadow-2xl transition-all duration-500
+                        hover:scale-[1.03] border border-primary/5 hover:border-primary/40 project-card-glow aspect-video bg-surface-container-high/40 flex items-center justify-center">
+              <div class="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent
+                          opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
+              
+              @if (project.visualType === 'image') {
+                <div class="w-full h-full overflow-hidden bg-surface-container-high">
+                  <img [src]="project.visualValue" [alt]="project.title" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700
+                              opacity-40 grayscale group-hover:grayscale-0 group-hover:opacity-100" />
+                </div>
+              } @else {
+                <span class="material-symbols-outlined text-primary/40 text-7xl transition-all duration-500 group-hover:scale-110 group-hover:text-primary">
+                  {{ project.visualValue }}
+                </span>
+              }
+            </div>
+          }
+
         </div>
+      }
+    </div>
+  </div>
+</section>
 
-        <!-- Text -->
-        <div class="space-y-6">
-          <div class="flex justify-between items-start group/title">
-            <h3
-              class="text-3xl font-headline font-bold text-on-surface group-hover/title:text-primary transition-colors cursor-pointer">
-              Property Management App (PMA)
-            </h3>
-            <span
-              class="material-symbols-outlined text-primary group-hover/title:rotate-45 transition-transform text-3xl">
-              arrow_outward
-            </span>
-          </div>
-          <p class="text-on-surface-variant text-lg leading-relaxed group-hover:text-on-surface transition-colors">
-            CRM-integrated property management backend built with Spring Boot and MySQL. Includes RESTful API design
-            with full Swagger/OpenAPI documentation.
-          </p>
-          <div class="flex flex-wrap gap-4 pt-4">
-            <span
-              class="text-xs tracking-[0.2em] uppercase font-bold text-primary px-2 py-1 border border-primary/10 rounded hover:border-primary transition-colors">SPRING
-              BOOT</span>
-            <span
-              class="text-xs tracking-[0.2em] uppercase font-bold text-primary px-2 py-1 border border-primary/10 rounded hover:border-primary transition-colors">MYSQL</span>
-            <span
-              class="text-xs tracking-[0.2em] uppercase font-bold text-primary px-2 py-1 border border-primary/10 rounded hover:border-primary transition-colors">SWAGGER</span>
-            <span
-              class="text-xs tracking-[0.2em] uppercase font-bold text-primary px-2 py-1 border border-primary/10 rounded hover:border-primary transition-colors">JPA</span>
-            <span
-              class="text-xs tracking-[0.2em] uppercase font-bold text-primary px-2 py-1 border border-primary/10 rounded hover:border-primary transition-colors">JAVA
-              8</span>
-          </div>
-        </div>
+<!-- Modal Overlay -->
+@if (selectedProject) {
+  <div class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-background/80 backdrop-blur-md animate-modal-backdrop" (click)="closeProject()">
+    <!-- Modal Content Box -->
+    <div class="relative w-full max-w-4xl max-h-[85vh] overflow-y-auto bg-surface-container-low border border-primary/20 rounded-2xl shadow-2xl p-6 md:p-10 space-y-6 md:space-y-8 animate-modal-content custom-modal-scrollbar" (click)="$event.stopPropagation()">
+      
+      <!-- Close Button -->
+      <button class="absolute top-4 right-4 md:top-6 md:right-6 text-on-surface-variant hover:text-primary transition-colors focus:outline-none" (click)="closeProject()">
+        <span class="material-symbols-outlined text-3xl">close</span>
+      </button>
+
+      <!-- Modal Header -->
+      <div class="space-y-2 pr-8">
+        <span class="text-primary font-headline font-bold text-xs uppercase tracking-[0.2em]">{{ selectedProject.subtitle }}</span>
+        <h3 class="text-2xl md:text-4xl font-headline font-bold text-on-surface">{{ selectedProject.title }}</h3>
       </div>
 
-      <!-- Project 2: nPos CLM -->
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center group">
+      <!-- Description -->
+      <p class="text-on-surface-variant text-base md:text-lg leading-relaxed border-l-2 border-primary/40 pl-4 italic">
+        {{ selectedProject.description }}
+      </p>
 
-        <!-- Text (left on desktop) -->
-        <div class="space-y-6 lg:order-1 order-2">
-          <div class="flex justify-between items-start group/title">
-            <div>
-              <h3
-                class="text-3xl font-headline font-bold text-on-surface group-hover/title:text-primary transition-colors cursor-pointer">
-                nPOS CLM — Co-Lending Platform (NorthernArc)
-              </h3>
-              <p class="text-sm text-primary/60 mt-1 font-mono">Duration: ~1 yr 8 mos</p>
-            </div>
-            <span
-              class="material-symbols-outlined text-primary group-hover/title:rotate-45 transition-transform text-3xl">
-              arrow_outward
+      <!-- Key Achievements (Bullet points) -->
+      <div class="space-y-4">
+        <h4 class="text-lg md:text-xl font-headline font-bold text-primary tracking-wide">Key Achievements & Responsibilities</h4>
+        <ul class="space-y-4 text-on-surface-variant text-sm md:text-base leading-relaxed">
+          @for (bullet of selectedProject.bullets; track bullet) {
+            <li class="flex gap-3 hover:text-on-surface transition-colors duration-150">
+              <span class="text-primary font-bold shrink-0">→</span>
+              <span>{{ bullet }}</span>
+            </li>
+          }
+        </ul>
+      </div>
+
+      <!-- Tech Stack Tags -->
+      <div class="space-y-3 pt-4 border-t border-primary/10">
+        <h4 class="text-xs text-primary/60 font-bold uppercase tracking-wider">Technologies Used</h4>
+        <div class="flex flex-wrap gap-2">
+          @for (tag of selectedProject.tags; track tag) {
+            <span class="text-[10px] md:text-xs tracking-[0.1em] uppercase font-bold text-primary px-3 py-1.5 border border-primary/15 rounded bg-primary/5 hover:border-primary transition-colors">
+              {{ tag }}
             </span>
-          </div>
-          <p class="text-on-surface-variant text-lg leading-relaxed group-hover:text-on-surface transition-colors">
-            Production-grade co-lending platform for NorthernArc NBFC. Features a Kafka-driven collections module, Redis
-            caching for loan status APIs, PostgreSQL optimisation with custom indexing, and Alembic-managed schema
-            migrations.
-          </p>
-          <div class="flex flex-wrap gap-3 pt-4">
-            <span
-              class="text-[10px] tracking-[0.1em] uppercase font-bold text-primary px-2 py-1 border border-primary/10 rounded hover:border-primary transition-colors">SPRING
-              BOOT</span>
-            <span
-              class="text-[10px] tracking-[0.1em] uppercase font-bold text-primary px-2 py-1 border border-primary/10 rounded hover:border-primary transition-colors">KAFKA</span>
-            <span
-              class="text-[10px] tracking-[0.1em] uppercase font-bold text-primary px-2 py-1 border border-primary/10 rounded hover:border-primary transition-colors">REDIS</span>
-            <span
-              class="text-[10px] tracking-[0.1em] uppercase font-bold text-primary px-2 py-1 border border-primary/10 rounded hover:border-primary transition-colors">POSTGRESQL</span>
-            <span
-              class="text-[10px] tracking-[0.1em] uppercase font-bold text-primary px-2 py-1 border border-primary/10 rounded hover:border-primary transition-colors">ALEMBIC</span>
-            <span
-              class="text-[10px] tracking-[0.1em] uppercase font-bold text-primary px-2 py-1 border border-primary/10 rounded hover:border-primary transition-colors">DOCKER</span>
-            <span
-              class="text-[10px] tracking-[0.1em] uppercase font-bold text-primary px-2 py-1 border border-primary/10 rounded hover:border-primary transition-colors">JAVA
-              8</span>
-          </div>
-        </div>
-
-        <!-- Image (right on desktop) -->
-        <div class="lg:order-2 order-1 relative rounded-2xl overflow-hidden shadow-2xl transition-all duration-500
-                    hover:scale-[1.03] border border-primary/5 hover:border-primary/40 project-card-glow">
-          <div class="aspect-video overflow-hidden bg-surface-container-high">
-            <img src="/colending_dashboard.png" alt="nPos CLM Loan Origination System" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700
-                        opacity-40 grayscale group-hover:grayscale-0 group-hover:opacity-100" />
-          </div>
-          <div class="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent
-                      opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
+          }
         </div>
       </div>
 
     </div>
   </div>
-</section>
+}
